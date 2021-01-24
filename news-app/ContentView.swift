@@ -25,7 +25,7 @@ struct ArticlesResponse: Codable {
 }
 
 class FetchArticles: ObservableObject {
-    let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=c884e0121bc24f1da0497794f1639a6d"
+    let apiUrl = "https://newsapi.org/v2/top-headlines?country=us&apiKey=c884e0121bc24f1da0497794f1639a6d"
     
     @Published var articles = ArticlesResponse(articles: [])
     

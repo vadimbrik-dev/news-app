@@ -67,34 +67,32 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(fetchArticles.articles.articles, id: \.title) { article in
-                        VStack(alignment: .leading) {
-                            Text(article.title)
-                                .font(.headline)
-                                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.15))
-                            Text(article.description)
+            List(fetchArticles.articles.articles, id: \.title) { article in
+                NavigationLink(destination: ArticleVeiw()) {
+                    VStack(alignment: .leading) {
+                        Text(article.title)
+                            .font(.headline)
+                            .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.15))
+                        Text(article.description)
+                            .font(.caption)
+                            .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.25))
+                            .padding(.vertical, 4.0)
+                        HStack {
+                            Text(article.source.name)
                                 .font(.caption)
-                                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.25))
-                                .padding(.vertical, 4.0)
-                            HStack {
-                                Text(article.source.name)
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
-                                Spacer()
-                                Text("\(ISO8601DateFormatter().date(from: article.publishedAt)!, formatter: Self.dateFormatter)")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
-                            }
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
+                            Spacer()
+                            Text("\(ISO8601DateFormatter().date(from: article.publishedAt)!, formatter: Self.dateFormatter)")
+                                .font(.caption)
+                                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
                         }
-                        .padding(.all, 4.0)
                     }
+                    .padding(.all, 4.0)
                 }
-                .navigationTitle("Latest news")
-                .listStyle(InsetGroupedListStyle())
             }
+            .navigationTitle("Latest news")
+            .listStyle(InsetGroupedListStyle())
         }
     }
 }

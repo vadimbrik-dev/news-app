@@ -6,6 +6,25 @@
 //
 
 import SwiftUI
+import WebKit
+
+struct WebView: UIViewRepresentable {
+    typealias UIViewType = WKWebView
+    
+    let url: URL
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        
+        webView.load(URLRequest(url: self.url))
+        
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        
+    }
+}
 
 struct Article: Codable {
     let title: String?
@@ -14,6 +33,7 @@ struct Article: Codable {
     let content: String?
     let author: String?
     let source: ArticleSource
+    let url: String?
     
     struct ArticleSource: Codable {
         let name: String?
@@ -49,12 +69,12 @@ class FetchArticles: ObservableObject {
 }
 
 struct ArticleVeiw: View {
+    let article: Article
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Hello, World!")
-            }
-        }
+        WebView(url: URL(string: article.url!)!)
+            .navigationBarTitle(article.title!)
+            .ignoresSafeArea(.all)
     }
 }
 
@@ -93,7 +113,7 @@ struct ContentView: View {
                     .padding(.all, 4.0)
                 }
             }
-            .navigationTitle("Latest news")
+            .navigationBarTitle("Latest news")
             .listStyle(InsetGroupedListStyle())
         }
     }

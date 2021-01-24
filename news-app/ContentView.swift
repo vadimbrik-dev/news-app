@@ -11,8 +11,8 @@ struct Article: Codable {
     let title: String
     let description: String
     let publishedAt: String
-    let content: String
-    let author: String
+    let content: String?
+    let author: String?
     let source: ArticleSource
     
     struct ArticleSource: Codable {

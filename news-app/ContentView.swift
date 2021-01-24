@@ -46,6 +46,16 @@ class FetchArticles: ObservableObject {
     }
 }
 
+struct ArticleVeiw: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("Hello, World!")
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     @ObservedObject var fetchArticles = FetchArticles()
     

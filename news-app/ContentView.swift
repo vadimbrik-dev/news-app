@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct Article: Codable {
-    let title: String
-    let description: String
-    let publishedAt: String
+    let title: String?
+    let description: String?
+    let publishedAt: String?
     let content: String?
     let author: String?
     let source: ArticleSource
     
     struct ArticleSource: Codable {
-        let name: String
+        let name: String?
     }
 }
 
@@ -70,22 +70,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(fetchArticles.articles.articles, id: \.title) { article in
-                NavigationLink(destination: ArticleVeiw()) {
+                NavigationLink(destination: ArticleVeiw(article: article)) {
                     VStack(alignment: .leading) {
-                        Text(article.title)
+                        Text(article.title ?? "No title")
                             .font(.headline)
                             .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.15))
-                        Text(article.description)
+                        Text(article.description ?? "No description")
                             .font(.caption)
                             .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.25))
                             .padding(.vertical, 4.0)
                         HStack {
-                            Text(article.source.name)
+                            Text(article.source.name ?? "No source")
                                 .font(.caption)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
                             Spacer()
-                            Text("\(ISO8601DateFormatter().date(from: article.publishedAt)!, formatter: Self.dateFormatter)")
+                            Text("\(ISO8601DateFormatter().date(from: article.publishedAt!)!, formatter: Self.dateFormatter)")
                                 .font(.caption)
                                 .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.35))
                         }

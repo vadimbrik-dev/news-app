@@ -168,10 +168,12 @@ struct NewsFeedLoadingView: View {
 
 typealias ArticlesRequest = APIRequest<ArticlesResponse>
 
-let endpoint = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=c884e0121bc24f1da0497794f1639a6d")!
-
 struct ContentView: View {
-    @ObservedObject var articlesRequest = ArticlesRequest(endpoint)
+    @ObservedObject var articlesRequest: ArticlesRequest
+    
+    init(endpoint: URL) {
+        self.articlesRequest = ArticlesRequest(endpoint)
+    }
     
     var body: some View {
         if let response = articlesRequest.response {
@@ -185,11 +187,5 @@ struct ContentView: View {
         } else {
             NewsFeedLoadingView()
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

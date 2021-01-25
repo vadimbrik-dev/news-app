@@ -13,6 +13,7 @@
 		D102C80025BACAF900C6D2B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D102C7FF25BACAF900C6D2B2 /* Preview Assets.xcassets */; };
 		D102C80B25BACAFA00C6D2B2 /* news_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102C80A25BACAFA00C6D2B2 /* news_appTests.swift */; };
 		D102C81625BACAFA00C6D2B2 /* news_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102C81525BACAFA00C6D2B2 /* news_appUITests.swift */; };
+		D1B1A7EB25BF0B67009E471A /* NewsAPI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1B1A7EA25BF0B67009E471A /* NewsAPI-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		D102C81125BACAFA00C6D2B2 /* news-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "news-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D102C81525BACAFA00C6D2B2 /* news_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = news_appUITests.swift; sourceTree = "<group>"; };
 		D102C81725BACAFA00C6D2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1B1A7E025BEF1C0009E471A /* news-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "news-app.entitlements"; sourceTree = "<group>"; };
+		D1B1A7EA25BF0B67009E471A /* NewsAPI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewsAPI-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +98,10 @@
 		D102C7F725BACAF800C6D2B2 /* news-app */ = {
 			isa = PBXGroup;
 			children = (
+				D1B1A7E025BEF1C0009E471A /* news-app.entitlements */,
 				D102C7F825BACAF800C6D2B2 /* news_appApp.swift */,
 				D102C7FA25BACAF800C6D2B2 /* ContentView.swift */,
+				D1B1A7EA25BF0B67009E471A /* NewsAPI-Info.plist */,
 				D102C7FC25BACAF900C6D2B2 /* Assets.xcassets */,
 				D102C80125BACAF900C6D2B2 /* Info.plist */,
 				D102C7FE25BACAF900C6D2B2 /* Preview Content */,
@@ -233,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B1A7EB25BF0B67009E471A /* NewsAPI-Info.plist in Resources */,
 				D102C80025BACAF900C6D2B2 /* Preview Assets.xcassets in Resources */,
 				D102C7FD25BACAF900C6D2B2 /* Assets.xcassets in Resources */,
 			);
@@ -417,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "news-app/news-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"news-app/Preview Content\"";
 				DEVELOPMENT_TEAM = CS2DR78M8T;
@@ -429,8 +436,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "solutions.prog.news-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -439,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "news-app/news-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"news-app/Preview Content\"";
 				DEVELOPMENT_TEAM = CS2DR78M8T;
@@ -451,8 +460,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "solutions.prog.news-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};

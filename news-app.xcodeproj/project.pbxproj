@@ -13,6 +13,7 @@
 		D102C80025BACAF900C6D2B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D102C7FF25BACAF900C6D2B2 /* Preview Assets.xcassets */; };
 		D102C80B25BACAFA00C6D2B2 /* news_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102C80A25BACAFA00C6D2B2 /* news_appTests.swift */; };
 		D102C81625BACAFA00C6D2B2 /* news_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102C81525BACAFA00C6D2B2 /* news_appUITests.swift */; };
+		D11A719E25C01900008880D1 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11A719D25C01900008880D1 /* SafariServices.framework */; };
 		D1B1A7EB25BF0B67009E471A /* NewsAPI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1B1A7EA25BF0B67009E471A /* NewsAPI-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		D102C81125BACAFA00C6D2B2 /* news-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "news-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D102C81525BACAFA00C6D2B2 /* news_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = news_appUITests.swift; sourceTree = "<group>"; };
 		D102C81725BACAFA00C6D2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D11A719D25C01900008880D1 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
 		D1B1A7E025BEF1C0009E471A /* news-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "news-app.entitlements"; sourceTree = "<group>"; };
 		D1B1A7EA25BF0B67009E471A /* NewsAPI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewsAPI-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11A719E25C01900008880D1 /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,7 @@
 				D102C80925BACAFA00C6D2B2 /* news-appTests */,
 				D102C81425BACAFA00C6D2B2 /* news-appUITests */,
 				D102C7F625BACAF800C6D2B2 /* Products */,
+				D11A719C25C01900008880D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +137,14 @@
 				D102C81725BACAFA00C6D2B2 /* Info.plist */,
 			);
 			path = "news-appUITests";
+			sourceTree = "<group>";
+		};
+		D11A719C25C01900008880D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D11A719D25C01900008880D1 /* SafariServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

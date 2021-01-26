@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import SafariServices
 
 struct WebView: UIViewRepresentable {
     typealias UIViewType = WKWebView
@@ -23,6 +24,24 @@ struct WebView: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
 
+    }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = SFSafariViewController
+    
+    let url: URL
+    
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        let configuration = SFSafariViewController.Configuration()
+        
+        configuration.entersReaderIfAvailable = true
+        
+        return SFSafariViewController(url: url, configuration: configuration)
+    }
+    
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+        
     }
 }
 

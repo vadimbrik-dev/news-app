@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import SafariServices
 
 struct WebView: UIViewRepresentable {
     typealias UIViewType = WKWebView
@@ -23,6 +24,24 @@ struct WebView: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
 
+    }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = SFSafariViewController
+    
+    let url: URL
+    
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        let configuration = SFSafariViewController.Configuration()
+        
+        configuration.entersReaderIfAvailable = true
+        
+        return SFSafariViewController(url: url, configuration: configuration)
+    }
+    
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+        
     }
 }
 
@@ -85,15 +104,28 @@ struct ArticleView: View {
     let article: Article
     
     var body: some View {
-        WebView(url: article.url)
-            .ignoresSafeArea()
-            .navigationBarTitle(article.title)
-            .navigationBarTitleDisplayMode(.inline)
+        #if targetEnvironment(macCatalyst)
+            SafariView(url: article.url)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: Edge.Set(Edge.bottom))
+                .navigationBarTitle(article.title)
+                .navigationBarTitleDisplayMode(.inline)
+        #else
+            WebView(url: article.url)
+                .ignoresSafeArea()
+                .navigationBarTitle(article.title)
+                .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
 struct ArticleItemView: View {
     let article: Article
+    
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -108,7 +140,7 @@ struct ArticleItemView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.gray)
                 Spacer()
-                Text(article.publishedAt ?? "Unknown date")
+                Text("\(ISO8601DateFormatter().date(from: article.publishedAt!)!, formatter: Self.dateFormatter)")
                     .font(.footnote)
                     .foregroundColor(Color.gray)
             }

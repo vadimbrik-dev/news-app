@@ -121,6 +121,12 @@ struct ArticleView: View {
 struct ArticleItemView: View {
     let article: Article
     
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(self.article.title)
@@ -134,7 +140,7 @@ struct ArticleItemView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.gray)
                 Spacer()
-                Text(article.publishedAt ?? "Unknown date")
+                Text("\(ISO8601DateFormatter().date(from: article.publishedAt!)!, formatter: Self.dateFormatter)")
                     .font(.footnote)
                     .foregroundColor(Color.gray)
             }

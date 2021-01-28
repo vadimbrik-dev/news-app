@@ -104,14 +104,14 @@ struct ArticleView: View {
     let article: Article
     
     var body: some View {
-        #if targetEnvironment(macCatalyst)
-            SafariView(url: article.url)
-                .ignoresSafeArea(SafeAreaRegions.all, edges: Edge.Set(Edge.bottom))
+        #if os(macOS) && !targetEnvironment(macCatalyst)
+            WebView(url: article.url)
+                .ignoresSafeArea()
                 .navigationBarTitle(article.title)
                 .navigationBarTitleDisplayMode(.inline)
         #else
-            WebView(url: article.url)
-                .ignoresSafeArea()
+            SafariView(url: article.url)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: Edge.Set(Edge.bottom))
                 .navigationBarTitle(article.title)
                 .navigationBarTitleDisplayMode(.inline)
         #endif
